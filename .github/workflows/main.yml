@@ -1,0 +1,54 @@
+# This is an IDE for creating a workflow with .yml 
+
+name: GitActions large task
+
+# Do these actions when we push to this branch 
+on: [push]
+
+# What jobs the server will do
+jobs:
+  
+  # name of job
+  exampleJobSendingMessage:
+    
+    # what instance this is running on
+    runs-on: ubuntu-latest
+    
+    # what we're wanting the ububtu machine to do
+    steps:
+    
+    # echo outputs some text
+    - run: echo 'Hello World'
+    # pwd shows path to durrent directory
+    - run: pwd
+    
+  file_jb:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo 'Hello World'
+    - run: pwd
+    - run: ls -a
+    - run: echo 'Commit message ${{ github.event.head_commit.message }}'
+    - run: echo 'job name ${{ github.job }}'
+    
+  clone_jb:
+    runs-on: ubuntu-latest
+    steps:
+    - run: ls -a
+    - name: Checkout
+      uses: actions/checkout@v2.5.0 # Default repo to clone down / checkout is our one
+    - run: echo '${{ github.repository }}'
+    - run: ls -a
+    # Command to proint out the contents of a file
+    - run: cat file1.txt
+    - run: echo "this is new text" >> file1.txt
+    - run: cat file1.txt
+    - run: python hello.py
+    
+  print_jb:
+    runs-on: ubuntu-latest
+    steps:
+    - run: ls -a
+    - run: pwd
+    
+    
