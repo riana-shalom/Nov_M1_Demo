@@ -1,0 +1,21 @@
+# This is an IDE for creating a workflow with .yml 
+
+name: GitActions Demo
+
+# Do these actions when we push to this branch 
+on: [push]
+
+# What jobs the server will do
+jobs:
+  # name of job
+  send_message:
+    # what instance this is running on
+    runs-on: ubuntu-latest
+    # what we're wanting the ububtu machine to do
+    steps:
+    # echo outputs some text
+    - run: echo 'Hello World'
+    - run: pwd
+    
+    
+
